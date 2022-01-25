@@ -22,7 +22,9 @@ if ($status==false) {
 }else{
   while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
     $view .= '<p>';
-    $view .= 'No.' . h($result['id']) . '_'. h($result['title']) . '_'. h($result['author']) . '_'. h($result['publisher']) . '_'. h($result['date']);
+    $view .= '<a href="detail.php?id=' . $result['id'] . '">';
+    $view .= h($result['id']) . '_'. h($result['title']) . '_'. h($result['author']) . '_'. h($result['publisher']) . '_'. h($result['date']);
+    $view .= '</a>';
     $view .= '</p>';
   }
 }
