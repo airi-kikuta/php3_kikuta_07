@@ -1,34 +1,36 @@
 
-<!-- 2 DBに接続する -->
+<!-- データ登録 -->
 
 <?php
-// 関数
+
 require_once('funcs.php');
 
-// 準備
-$title = $_POST['title'];
-$author = $_POST['author'];
-$publisher = $_POST['publisher'];
+//1. POSTデータ取得
+$name   = $_POST['name'];
+$lid  = $_POST['lid'];
+$pw    = $_POST['pw'];
+$admin = $_POST['admin'];
 
 
-// step 1 ------------------------------------
+//2. DB接続
 $pdo = db_conn();
 
-// step 2 ------------------------------------
-$stmt = $pdo->prepare("INSERT INTO book_table(id, title, author, publisher, date)
-                       VALUES(NULL, :title, :author, :publisher, sysdate())");
-$stmt->bindValue(':title', $title, PDO::PARAM_STR);
-$stmt->bindValue(':author', $author, PDO::PARAM_STR);
-$stmt->bindValue(':publisher', $publisher, PDO::PARAM_STR);
-$status = $stmt->execute();
+
+//３．データ登録SQL作成
+$stmt = $pdo->prepare("INSERT INTO user_table(name,lid,pw,admin)VALUES(:name,:lid,:pw,:admin)");
+
+
+$stmt->bindValue(':name', $name, PDO::PARAM_STR);
+$stmt->bindValue(':lid', $lid, PDO::PARAM_STR);
+$stmt->bindValue(':pw', $pw, PDO::PARAM_INT);
+$stmt->bindValue(':admin', $admin, PDO::PARAM_INT);
+$status = $stmt->execute(); //実行
 
 
 
-//step 3 ------------------------------------
+//４．データ登録処理後
 if ($status === false) {
-    $error = $stmt->errorInfo();
-    exit("ErrorMessage:" . print_r($error, true));
+    sql_error($stmt);
 } else {
-    header('Location: index.php');
+    redirect('index.php');
 }
-

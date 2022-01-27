@@ -1,36 +1,40 @@
-
-<!-- 1.データを入力する -->
-
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
     <meta charset="UTF-8">
-    <title>BookMark</title>
-    <link rel="stylesheet" href="style.css">
+    <title>User登録</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        div {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
-
     <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header"><a class="navbar-brand" href="select.php">Book Data</a></div>
+                <div class="navbar-header"><a class="navbar-brand" href="select.php">User一覧</a></div>
             </div>
         </nav>
     </header>
 
 
-    <form method="post" action="insert.php">
-        <h1>BookMark</h1>
-        <input type="text" placeholder="タイトル" name="title"><br>
-        <input type="text" placeholder="著者" name="author"><br>
-        <input type="text" placeholder="出版社" name="publisher"><br>
-        <button type="submit" value="入力">入力</button>
+    <form method="POST" action="insert.php">
+        <div class="jumbotron">
+            <fieldset>
+                <legend>User登録</legend>
+                <label>名前：<input type="text" name="name"></label><br>
+                <label>ID：<input type="text" name="lid"></label><br>
+                <label>PW：<input type="text" name="pw"></label><br>
+                <label>管理者：<input type="checkbox" name="admin[]" value=1 checked ></label><br>
+                <input type="submit" value="送信">
+            </fieldset>
+        </div>
     </form>
-
-
-
 </body>
 
 </html>

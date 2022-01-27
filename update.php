@@ -1,23 +1,28 @@
 <?php
 
+
+require_once('funcs.php');
 //1. POSTデータ取得
-$title   = $_POST['title'];
-$author  = $_POST['author'];
-$publisher  = $_POST['publisher'];
+$name   = $_POST['name'];
+$lid  = $_POST['lid'];
+$pw    = $_POST['pw'];
+$admin = $_POST['admin'];
 $id = $_POST['id'];
 
 //2. DB接続します
-require_once('funcs.php');
 $pdo = db_conn();
 
 //３．データ登録SQL作成
-$stmt = $pdo->prepare( 'UPDATE book_table SET title = :title, author = :author, publisher = :publisher, indate = sysdate() WHERE id = :id;' );
+$stmt = $pdo->prepare('UPDATE user_table SET name = :name, lid = :lid, pw = :pw, admin = :admin WHERE id = :id;');
 
-$stmt->bindValue(':title', $title, PDO::PARAM_STR);
-$stmt->bindValue(':author', $author, PDO::PARAM_STR);
-$stmt->bindValue(':publisher', $publisher, PDO::PARAM_STR);
+// 数値の場合 PDO::PARAM_INT
+// 文字の場合 PDO::PARAM_STR
+$stmt->bindValue(':name', $name, PDO::PARAM_STR);
+$stmt->bindValue(':lid', $lid, PDO::PARAM_STR);
+$stmt->bindValue(':pw', $pw, PDO::PARAM_INT);
+$stmt->bindValue(':admin', $admin, PDO::PARAM_STR);
 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-$status = $stmt->execute();
+$status = $stmt->execute(); //実行
 
 //４．データ登録処理後
 if ($status === false) {
