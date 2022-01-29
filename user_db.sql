@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: localhost:8889
--- 生成日時: 2022 年 1 月 29 日 06:13
+-- 生成日時: 2022 年 1 月 29 日 06:36
 -- サーバのバージョン： 5.7.34
 -- PHP のバージョン: 7.4.21
 
@@ -40,11 +40,11 @@ CREATE TABLE `user_table` (
 --
 
 INSERT INTO `user_table` (`id`, `name`, `lid`, `pw`, `admin`) VALUES
-(5, 'sds', 'ss', '0', 1),
-(6, 'gregt', 'dgvds', '0', 1),
-(7, 'aaa', '111', '222', 1),
-(8, 'aaa', 'ss', '0', 1),
-(9, 'あああ', 'ddds', '0', 1);
+(10, 'あいり', '1234', '0', 1),
+(11, 'ようこ', '4557', '0', 1),
+(12, 'まりこ', '0986', '0', NULL),
+(13, 'あきと', '3456', '0', 1),
+(14, 'りさ', '3456', '0', 1);
 
 --
 -- ダンプしたテーブルのインデックス
@@ -64,7 +64,7 @@ ALTER TABLE `user_table`
 -- テーブルの AUTO_INCREMENT `user_table`
 --
 ALTER TABLE `user_table`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
